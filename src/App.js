@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-function App() {
+import store from './store';
+
+import RoutesPrivate from './services/Private/Private';
+
+import Home from './pages/Home/index.js'
+import Cadastro from './components/cadastro'
+import Dashboard from './pages/Dashboard/index.js';
+import NotFound from './pages/NotFound.js';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Provider store={store}>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <RoutesPrivate exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/cadastro" component={() => <Cadastro />} />
+            <Route exact path="/not-found" component={() => <NotFound />} />
+          </Switch>
+      </Provider>
+    </BrowserRouter>
   );
 }
 
