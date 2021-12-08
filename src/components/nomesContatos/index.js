@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { dashboard } from '../../services/fetchActions';
 import { useDispatch } from 'react-redux';
+import { dashboardDelete } from '../../services/fetchActions';
 import { DashboardSelectContato } from '../../store/dashboard/Dashboard.actions';
+import { message } from 'antd';
+import { Reload } from '../reload';
+
+import { Input, Div } from './nomesContatos';
 
 function NomesContatos() {
   const dispatch = useDispatch();
@@ -20,19 +25,31 @@ function NomesContatos() {
     dispatch(DashboardSelectContato(e.target.name));
   }
 
+  const RemoverContato = async (event) =>  {
+    const result = await dashboardDelete(event.target.name);
+
+    if (!result)
+      message.success('Contato removido com sucesso.');
+    else
+      message.error('Erro: remover contato');
+    Reload();
+  }
+
   return (
     <div>
       {data.length > 0
         ? data.map((or, index) => (
-            <div key={ index }>
-              <input
+            <Div key={ index }>
+              <Input
                 type="button"
                 className="inputContatos"
                 onClick={onClick}
-                name={`${or.nome}`}
-                value={`${or.nome} ${or.sobrenome}`}
-              />  
-            </div>
+                name={`${or["nome"]}`}
+                value={`${or["nome"]}`}
+                />
+              <button>Lupa</button>
+              <button name={`${or["nome"]}`} onClick={(e) => RemoverContato(e)}>Deletar</button>
+            </Div>
         ))
         : <p>Nenhum contato</p>
       }
