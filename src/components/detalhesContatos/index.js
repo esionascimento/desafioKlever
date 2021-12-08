@@ -12,13 +12,11 @@ function NomesContatos() {
   
   useEffect(() => {
     dashboard().then((aux) => {
-      if (aux.data.length > 0) {
+      if (aux.data["length"] > 0) {
         const salve = aux.data[0].data;
-        salve.map((data, index) =>{
-          if (contato === salve[index].nome) {
-            setData(data);
-          }
-        })
+        salve.map((data, index) => contato === salve[index].nome &&
+            setData(data)
+        )
       }
     });
   },[contato]);
@@ -34,7 +32,7 @@ function NomesContatos() {
 
   return (
     <div>
-      {data
+      {contato.length > -1
         ? <div>
             <div className="dcButton">
               <button onClick={() => RemoverContato()}>Remover Contato</button>
@@ -46,7 +44,7 @@ function NomesContatos() {
             <p>Data de nascimento: {data.dataNascimento}</p>
             <p>Endereço: {data.endereco}</p>
           </div>
-        : <p>erro</p>
+        : <p>Detalhe contato</p>
       }
     </div>
   );
