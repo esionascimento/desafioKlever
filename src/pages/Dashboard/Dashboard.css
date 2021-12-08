@@ -29,11 +29,10 @@ li:hover {
 }
 
 .esquerda {
-  background-color: skyblue;
   width: 30%;
+  border-right: 1px solid black;
 }
 
 .direita {
-  background-color: violet;
   width: 70%;
 }
