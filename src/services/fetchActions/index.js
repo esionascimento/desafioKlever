@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL= 'https://desafio-ser-educacional-back.herokuapp.com';
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const token = localStorage.getItem('token');
 
 export const newCadastro = (user) => {
