@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { SalveFormContato } from '../../store/dashboard/Dashboard.actions';
 
@@ -17,7 +17,7 @@ export function FormContato() {
 
   useEffect(() => {
     dispatch(SalveFormContato(form));
-  },[form]);
+  }, [form, dispatch]);
 
   function onChange(event) {
     setForm({ ...form, [event.target.name]: event.target.value });
