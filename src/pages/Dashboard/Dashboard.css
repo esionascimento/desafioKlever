@@ -4,35 +4,11 @@
   list-style-type: none;
 }
 
-.app-header {
-  display: flex;  
-  justify-content: space-between;
-  background-color: silver;
-}
-
-.div {
-  display: flex;
-  flex-direction: row nowrap;
-}
-
-li {
-  margin: 5px;
-  padding: 10px;
-}
-
-li:hover {
-  background-color: slateblue;
-}
-
-.body {
-  display: flex;
-}
-
 .esquerda {
-  width: 30%;
+  width: 50%;
   border-right: 1px solid black;
 }
 
 .direita {
-  width: 70%;
+  width: 50%;
 }

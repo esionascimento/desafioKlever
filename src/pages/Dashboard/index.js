@@ -12,6 +12,7 @@ import { dashboardCreate } from '../../services/fetchActions';
 import { Reload } from '../../components/reload';
 
 import './Dashboard.css';
+import { Header, Li, LiSair, DivBody } from './Dashboard';
 
 function Dashboard() {
   const history = useHistory()
@@ -64,15 +65,11 @@ function Dashboard() {
         {FormContato()}
       </Modal>
 
-      <header className="app-header">
-        <ul className="div">
-          <li onClick={showModal}>Novo contato</li>
-        </ul>
-        <ul className="div">
-          <li onClick={sair}>Sair</li>
-        </ul>
-      </header>
-      <div className="body">
+      <Header>
+        <Li onClick={showModal}>Novo contato</Li>
+        <Li onClick={sair}>Sair</Li>
+      </Header>
+      <DivBody>
         <div className="esquerda">
           <div>
             <NomesContatos />
@@ -83,7 +80,7 @@ function Dashboard() {
             <DetalhesContatos />
           </div>
         </div>
-      </div>
+      </DivBody>
     </>
   );
 }
