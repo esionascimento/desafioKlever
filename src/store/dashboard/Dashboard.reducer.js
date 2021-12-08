@@ -8,7 +8,7 @@ const INITIAL_STATE = {
   endereco: '',
 };
 
-export default function (state = INITIAL_STATE, action) {
+export default function DashboardContato (state = INITIAL_STATE, action) {
   switch(action.type) {
     case 'CONTATO_SELECIONADO':
       return {

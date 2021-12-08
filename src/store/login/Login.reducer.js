@@ -2,7 +2,7 @@ const INITIAL_STATE = {
   email: '',
 };
 
-export default function (state = INITIAL_STATE, action) {
+export default function LoginReducer (state = INITIAL_STATE, action) {
   switch(action.type) {
     case 'EMAIL_LOGIN':
       return {
