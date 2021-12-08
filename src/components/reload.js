@@ -1,5 +1,5 @@
 export function Reload() {
   setInterval(() => {
     window.location.reload();
-  }, 1000);
+  }, 900);
 }
