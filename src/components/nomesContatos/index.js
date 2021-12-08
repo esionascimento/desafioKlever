@@ -23,8 +23,8 @@ function NomesContatos() {
   return (
     <div>
       {data.length > 0
-        ? data.map((or) => (
-            <div key={ or.id }>
+        ? data.map((or, index) => (
+            <div key={ index }>
               <input
                 type="button"
                 className="inputContatos"
