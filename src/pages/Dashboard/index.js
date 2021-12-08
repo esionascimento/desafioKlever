@@ -4,15 +4,13 @@ import { useSelector } from 'react-redux';
 import { Modal, message } from 'antd';
 import 'antd/dist/antd.css';
 
-
 import NomesContatos from '../../components/nomesContatos';
 import DetalhesContatos from '../../components/detalhesContatos';
 import { FormContato } from '../../components/criarContato';
 import { dashboardCreate } from '../../services/fetchActions';
 import { Reload } from '../../components/reload';
 
-import './Dashboard.css';
-import { Header, Li, LiSair, DivBody } from './Dashboard';
+import { Header, Li, DivBody, DivEsquerda, DivDireita, DivDashboard } from './Dashboard';
 
 function Dashboard() {
   const history = useHistory()
@@ -54,7 +52,7 @@ function Dashboard() {
   }
 
   return (
-    <>
+    <DivDashboard>
       <Modal
         title="Novo Contato"
         visible={visible}
@@ -70,18 +68,18 @@ function Dashboard() {
         <Li onClick={sair}>Sair</Li>
       </Header>
       <DivBody>
-        <div className="esquerda">
+        <DivEsquerda>
           <div>
             <NomesContatos />
           </div>
-        </div>
-        <div className="direita">
+        </DivEsquerda>
+        <DivDireita>
           <div>
             <DetalhesContatos />
           </div>
-        </div>
+        </DivDireita>
       </DivBody>
-    </>
+    </DivDashboard>
   );
 }
 
