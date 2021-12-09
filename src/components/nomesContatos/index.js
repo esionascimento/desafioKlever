@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import { dashboard } from '../../services/fetchActions';
-import { useDispatch } from 'react-redux';
-import { dashboardDelete } from '../../services/fetchActions';
+import { fetchDashboard, dashboardDelete } from '../../services/fetchActions';
+import { useDispatch, useSelector } from 'react-redux';
 import { DashboardSelectContato } from '../../store/dashboard/Dashboard.actions';
 import { message } from 'antd';
 import { Reload } from '../reload';
@@ -13,15 +12,16 @@ import { VisibleModaldetalhes } from '../../store/visibleModal/visibleModal.acti
 function NomesContatos() {
   const dispatch = useDispatch();
   const [data, setData ] = useState([]);
+  const {nome} = useSelector((state) => state.dashboard);
 
   useEffect(() => {
-    dashboard().then((aux) => {
+    fetchDashboard().then((aux) => {
       if (aux.data) {
         const salve = aux.data[0].data;
         setData(salve);
       }
     });
-  },[])
+  },[nome])
 
   function onClick(e) {
     dispatch(DashboardSelectContato(e.target.name));
@@ -48,7 +48,7 @@ function NomesContatos() {
                 className="inputContatos"
                 onClick={onClick}
                 name={`${or["nome"]}`}
-                value={`${or["nome"]}`}
+                value={`${or["nome"]} ${or["sobrenome"] ? or["sobrenome"]: ""}`}
                 />
               <button>Editar</button>
               <button name={`${or["nome"]}`} onClick={(e) => RemoverContato(e)}>Deletar</button>
