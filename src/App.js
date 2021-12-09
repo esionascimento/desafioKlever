@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
@@ -9,7 +8,7 @@ import RoutesPrivate from './services/Private/Private';
 import Home from './pages/Home/index.js'
 import Cadastro from './components/cadastro'
 import Dashboard from './pages/Dashboard/index.js';
-import NotFound from './pages/NotFound.js';
+import { NotFound } from './pages/NotFound/NotFound.js';
 
 const App = () => {
   return (
