@@ -13,6 +13,7 @@ export const Header = styled.div`
 `;
 
 export const Li = styled.li`
+  margin: 5px;
   padding: 5px;
   border: 1px solid black;
   border-radius: 5px;
@@ -23,13 +24,13 @@ export const Li = styled.li`
 
 export const DivBody = styled.div`
   display: flex;
+  justify-content: center;
+`;
+
+export const DivHeaderEsquerdo = styled.div`
+  display: flex;
 `;
 
 export const DivEsquerda = styled.div`
-  width: 80%;
-  border-right: 1px solid black;
-`;
-
-export const DivDireita = styled.div`
-  width: 20%;
+  display: flex;
 `;

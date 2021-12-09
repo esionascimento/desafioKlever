@@ -7,7 +7,7 @@ import NomesContatos from '../../components/nomesContatos';
 import { NewContact } from '../../components/newContact/NewContact';
 import { VisibleModalNewContact } from '../../store/visibleModal/visibleModal.actions';
 
-import { Header, Li, DivBody, DivEsquerda, DivDireita, DivDashboard } from './DashboardCss';
+import { Header, Li, DivBody, DivEsquerda, DivHeaderEsquerdo, DivDashboard } from './DashboardCss';
 
 function Dashboard() {
   const history = useHistory();
@@ -30,20 +30,16 @@ function Dashboard() {
   return (
     <DivDashboard>
       <Header>
-        <Li onClick={showModal}>Novo contato</Li>
+        <DivHeaderEsquerdo>
+          <Li onClick={showModal}>Novo contato</Li>
+          <Li>Notícias</Li>
+        </DivHeaderEsquerdo>
         <Li onClick={sair}>Sair</Li>
       </Header>
       <DivBody>
         <DivEsquerda>
-          <div>
             <NomesContatos />
-          </div>
         </DivEsquerda>
-        <DivDireita>
-          <div>
-            Avisos
-          </div>
-        </DivDireita>
       </DivBody>
       <NewContact />
     </DivDashboard>
