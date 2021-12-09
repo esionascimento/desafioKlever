@@ -5,7 +5,7 @@ import { Modal, message } from 'antd';
 import 'antd/dist/antd.css';
 
 import NomesContatos from '../../components/nomesContatos';
-import DetalhesContatos from '../../components/detalhesContatos';
+/* import DetalhesContatos from '../../components/detalhesContatos'; */
 import { FormContato } from '../../components/criarContato';
 import { dashboardCreate } from '../../services/fetchActions';
 import { Reload } from '../../components/reload';
@@ -75,7 +75,7 @@ function Dashboard() {
         </DivEsquerda>
         <DivDireita>
           <div>
-            <DetalhesContatos />
+            Avisos
           </div>
         </DivDireita>
       </DivBody>
