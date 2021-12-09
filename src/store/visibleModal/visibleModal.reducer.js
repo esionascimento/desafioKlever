@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
   visibleModalDetalhes: false,
+  visibleModalNewContact: false
 };
 
 export function VisibleModal (state = INITIAL_STATE, action) {
@@ -8,7 +9,11 @@ export function VisibleModal (state = INITIAL_STATE, action) {
       return {
         visibleModalDetalhes: action.payload
       }
+    case 'VISIBLE_MODAL_NEW_CONTACT':
+      return {
+        visibleModalNewContact: action.payload
+      }
     default:
       return state;
-  }
-}
+  };
+};
