@@ -24,7 +24,7 @@ export const authenticate = (token) => APIPOST.post('/authorization', token);
 
 export const login = (user) => APIPOST.post('/login', user);
 
-export const dashboard = () => APIPOST.get('/dashboard');
+export const fetchDashboard = () => APIPOST.get('/dashboard');
 
 export const dashboardDelete = (contato) => {
   const aux = { nome: contato}

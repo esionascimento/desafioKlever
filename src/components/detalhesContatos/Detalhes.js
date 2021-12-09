@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Modal } from 'antd';
-import { dashboard } from '../../services/fetchActions';
+import { fetchDashboard } from '../../services/fetchActions';
 import { useSelector, useDispatch } from 'react-redux';
 import { VisibleModaldetalhes } from '../../store/visibleModal/visibleModal.actions';
 
@@ -32,7 +32,7 @@ export const Detalhes = (chaveVisible) => {
   };
 
   useEffect(() => {
-    dashboard().then((aux) => {
+    fetchDashboard().then((aux) => {
       if (aux.data["length"] > 0) {
         const salve = aux.data[0].data;
         salve.map((data, index) => contato === salve[index].nome &&
