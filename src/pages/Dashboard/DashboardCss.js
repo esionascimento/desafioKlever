@@ -26,10 +26,10 @@ export const DivBody = styled.div`
 `;
 
 export const DivEsquerda = styled.div`
-  width: 50%;
+  width: 80%;
   border-right: 1px solid black;
 `;
 
 export const DivDireita = styled.div`
-  width: 50%;
+  width: 20%;
 `;

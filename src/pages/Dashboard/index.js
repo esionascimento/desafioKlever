@@ -10,7 +10,7 @@ import { FormContato } from '../../components/criarContato';
 import { dashboardCreate } from '../../services/fetchActions';
 import { Reload } from '../../components/reload';
 
-import { Header, Li, DivBody, DivEsquerda, DivDireita, DivDashboard } from './Dashboard';
+import { Header, Li, DivBody, DivEsquerda, DivDireita, DivDashboard } from './DashboardCss';
 
 function Dashboard() {
   const history = useHistory()
