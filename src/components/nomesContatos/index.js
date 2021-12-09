@@ -6,8 +6,9 @@ import { message } from 'antd';
 import { Reload } from '../reload';
 import { Detalhes } from '../detalhesContatos/Detalhes';
 import 'antd/dist/antd.css';
-import { Input, Div } from './nomesContatos';
 import { VisibleModaldetalhes } from '../../store/visibleModal/visibleModal.actions';
+
+import { Input, Div } from './nomesContatos';
 
 function NomesContatos() {
   const dispatch = useDispatch();
