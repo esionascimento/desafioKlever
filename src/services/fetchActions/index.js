@@ -27,7 +27,8 @@ export const login = (user) => APIPOST.post('/login', user);
 export const fetchDashboard = () => APIPOST.get('/dashboard');
 
 export const dashboardDelete = (contato) => {
-  const aux = { nome: contato}
-  APIPOST.patch('/dashboard/delete', aux)
+  const aux = { name: contato}
+  console.log('contato :', aux);
+  APIPOST.delete('/dashboard/delete', aux)
 };
 export const dashboardCreate = (contato) => APIPOST.post('/dashboard/create', contato);
