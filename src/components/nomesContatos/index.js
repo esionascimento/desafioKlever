@@ -5,8 +5,9 @@ import { DashboardSelectContato } from '../../store/dashboard/Dashboard.actions'
 import { message } from 'antd';
 import { Reload } from '../reload';
 import { Detalhes } from '../detalhesContatos/Detalhes';
+import { EditarContato } from '../editarContato';
 import 'antd/dist/antd.css';
-import { VisibleModaldetalhes } from '../../store/visibleModal/visibleModal.actions';
+import { VisibleModaldetalhes, VisibleModalEditar } from '../../store/visibleModal/visibleModal.actions';
 
 import { Input, Div } from './nomesContatos';
 
@@ -18,7 +19,6 @@ export function NomesContatos() {
   useEffect(() => {
     fetchDashboard().then((aux) => {
       if (aux.data && aux.data[0]) {
-        console.log('aux.data :', aux.data);
         const salve = aux.data[0].data;
         setData(salve);
       }
@@ -40,6 +40,11 @@ export function NomesContatos() {
     Reload();
   }
 
+  const editar = (e) => {
+    dispatch(DashboardSelectContato(e.target.name));
+    dispatch(VisibleModalEditar(true));
+  }
+
   return (
     <div>
       {data.length > 0
@@ -52,13 +57,14 @@ export function NomesContatos() {
                 name={`${or["name"]}`}
                 value={`${or["name"]} ${or["sobrenome"] ? or["sobrenome"]: ""}`}
                 />
-              <button>Editar</button>
+              <button name={`${or["name"]}`} onClick={(e) => editar(e)}>Editar</button>
               <button name={`${or["name"]}`} onClick={(e) => RemoverContato(e)}>Deletar</button>
             </Div>
         ))
         : <p>Nenhum contato</p>
       }
       <Detalhes />
+      <EditarContato />
     </div>
   );
 }
