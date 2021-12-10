@@ -6,7 +6,7 @@ import { SalveFormContato } from '../../store/dashboard/Dashboard.actions';
 import { dashboardCreate } from '../../services/fetchActions';
 
 export const NewContact = () => {
-  const [visible, setVisible] = React.useState(true);
+  const [visible, setVisible] = React.useState(false);
   const dispatch = useDispatch();
   const { visibleModalNewContact } = useSelector((state) => state.visibleModal);
   const [form] = Form.useForm();
