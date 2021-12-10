@@ -4,7 +4,7 @@ import { fetchDashboard } from '../../services/fetchActions';
 import { useSelector, useDispatch } from 'react-redux';
 import { VisibleModaldetalhes } from '../../store/visibleModal/visibleModal.actions';
 
-export const Detalhes = (chaveVisible) => {
+export const Detalhes = () => {
   const dispatch = useDispatch();
   const { contato } = useSelector(state => state.dashboard);
   const { visibleModalDetalhes } = useSelector(state => state.visibleModal);
