@@ -17,7 +17,8 @@ function NomesContatos() {
 
   useEffect(() => {
     fetchDashboard().then((aux) => {
-      if (aux.data) {
+      if (aux.data && aux.data[0]) {
+        console.log('aux.data :', aux.data);
         const salve = aux.data[0].data;
         setData(salve);
       }
