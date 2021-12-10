@@ -11,3 +11,10 @@ export function VisibleModalNewContact (visible) {
     payload: visible
   }
 };
+
+export function VisibleModalEditar (visible) {
+  return {
+    type: 'VISIBLE_MODAL_EDITAR',
+    payload: visible
+  }
+};
