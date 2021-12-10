@@ -10,7 +10,7 @@ import { VisibleModaldetalhes } from '../../store/visibleModal/visibleModal.acti
 
 import { Input, Div } from './nomesContatos';
 
-function NomesContatos() {
+export function NomesContatos() {
   const dispatch = useDispatch();
   const [data, setData ] = useState([]);
   const {nome} = useSelector((state) => state.dashboard);
@@ -62,5 +62,3 @@ function NomesContatos() {
     </div>
   );
 }
-
-export default NomesContatos;
