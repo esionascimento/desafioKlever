@@ -9,7 +9,7 @@ export const newCadastro = (user) => {
   .then((res) => {
     console.log(res.data);
   })
-  .catch(console.log);
+  .catch();
 };
 
 const APIPOST = axios.create({
