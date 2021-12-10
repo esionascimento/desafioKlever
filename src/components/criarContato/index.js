@@ -7,7 +7,7 @@ import './criarContato.css';
 export function FormContato() {
   const dispatch = useDispatch();
   const [form, setForm] = useState({
-    nome: '',
+    name: '',
     sobrenome: '',
     telefone: '',
     dataNascimento: '',
@@ -29,7 +29,7 @@ export function FormContato() {
         <form>
           <div>
             <label>Nome: </label>
-            <input type="text" name="nome" onChange={onChange} required></input>
+            <input type="text" name="name" onChange={onChange} required></input>
           </div>
           <div>
             <label>Sobrenome: </label>

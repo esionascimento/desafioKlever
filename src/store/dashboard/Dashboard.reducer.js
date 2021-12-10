@@ -1,6 +1,6 @@
 const INITIAL_STATE = {
   contato: -1,
-  nome: '',
+  name: '',
   sobrenome: '',
   telefone: '',
   email: '',
@@ -18,7 +18,7 @@ export default function DashboardContato (state = INITIAL_STATE, action) {
     case 'SALVE_FORM':
       return {
         ...state,
-        nome: action.payload.nome, sobrenome: action.payload.sobrenome,
+        name: action.payload.name, sobrenome: action.payload.sobrenome,
         telefone: action.payload.telefone, dataNascimento: action.payload.dataNascimento,
         endereco: action.payload.endereco, email: action.payload.email
       }

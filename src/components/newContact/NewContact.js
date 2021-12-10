@@ -36,7 +36,7 @@ export const NewContact = () => {
             <div>
                 <Form.Item
                   label="Nome"
-                  name="nome"
+                  name="name"
                   rules={[{ required: true, message: 'Por favor insira o nome!' }]}
                 >
                   <input type="text" />

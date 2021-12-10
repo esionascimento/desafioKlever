@@ -35,7 +35,7 @@ export const Detalhes = (chaveVisible) => {
     fetchDashboard().then((aux) => {
       if (aux.data["length"] > 0) {
         const salve = aux.data[0].data;
-        salve.map((data, index) => contato === salve[index].nome &&
+        salve.map((data, index) => contato === salve[index].name &&
             setData(data)
         )
       }
@@ -45,7 +45,7 @@ export const Detalhes = (chaveVisible) => {
   function formDetalhes() {
     return (
       <form>
-        <p>Nome: <span>{data.nome}</span></p>
+        <p>Nome: <span>{data.name}</span></p>
         <p>Sobrenome: <span>{data.sobrenome}</span></p>
         <p>Telefone: <span>{data.telefone}</span></p>
         <p>Email: <span>{data.email}</span></p>
@@ -58,7 +58,7 @@ export const Detalhes = (chaveVisible) => {
   return (
     <>
       <Modal
-        title={`Detalhes do(a) ${data.nome}`}
+        title={`Detalhes do(a) ${data.name}`}
         visible={visible}
         onOk={handleOk}
         confirmLoading={confirmLoading}

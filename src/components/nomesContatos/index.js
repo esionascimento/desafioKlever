@@ -13,7 +13,7 @@ import { Input, Div } from './nomesContatos';
 export function NomesContatos() {
   const dispatch = useDispatch();
   const [data, setData ] = useState([]);
-  const {nome} = useSelector((state) => state.dashboard);
+  const {name} = useSelector((state) => state.dashboard);
 
   useEffect(() => {
     fetchDashboard().then((aux) => {
@@ -23,7 +23,7 @@ export function NomesContatos() {
         setData(salve);
       }
     });
-  },[nome])
+  },[name])
 
   function onClick(e) {
     dispatch(DashboardSelectContato(e.target.name));
@@ -49,11 +49,11 @@ export function NomesContatos() {
                 type="button"
                 className="inputContatos"
                 onClick={onClick}
-                name={`${or["nome"]}`}
-                value={`${or["nome"]} ${or["sobrenome"] ? or["sobrenome"]: ""}`}
+                name={`${or["name"]}`}
+                value={`${or["name"]} ${or["sobrenome"] ? or["sobrenome"]: ""}`}
                 />
               <button>Editar</button>
-              <button name={`${or["nome"]}`} onClick={(e) => RemoverContato(e)}>Deletar</button>
+              <button name={`${or["name"]}`} onClick={(e) => RemoverContato(e)}>Deletar</button>
             </Div>
         ))
         : <p>Nenhum contato</p>

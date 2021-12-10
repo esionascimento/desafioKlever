@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import 'antd/dist/antd.css';
 
-import NomesContatos from '../../components/nomesContatos';
+import { NomesContatos } from '../../components/nomesContatos';
 import { NewContact } from '../../components/newContact/NewContact';
 import { VisibleModalNewContact } from '../../store/visibleModal/visibleModal.actions';
 
