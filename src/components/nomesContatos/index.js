@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchDashboard, dashboardDelete } from '../../services/fetchActions';
-import { useDispatch, useSelector } from 'react-redux';
-import { DashboardSelectContato } from '../../store/dashboard/Dashboard.actions';
+import { useDispatch } from 'react-redux';
+import { DashboardSelectContato, AtualizarGet } from '../../store/dashboard/Dashboard.actions';
 import { message } from 'antd';
 import { Reload } from '../reload';
 import { Detalhes } from '../detalhesContatos/Detalhes';
@@ -14,16 +14,20 @@ import { Input, Div } from './nomesContatos';
 export function NomesContatos() {
   const dispatch = useDispatch();
   const [data, setData ] = useState([]);
-  const {name} = useSelector((state) => state.dashboard);
 
   useEffect(() => {
+    aux();
+    dispatch(AtualizarGet(aux));
+  },[dispatch]);
+
+  const aux = () => {
     fetchDashboard().then((aux) => {
       if (aux.data && aux.data[0]) {
         const salve = aux.data[0].data;
         setData(salve);
       }
     });
-  },[name])
+  };
 
   function onClick(e) {
     dispatch(DashboardSelectContato(e.target.name));
