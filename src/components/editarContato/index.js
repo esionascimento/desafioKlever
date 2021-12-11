@@ -31,6 +31,7 @@ export const EditarContato = () => {
             });
             setData(data);
           }
+          return ''
         })
       }
     });
