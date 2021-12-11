@@ -6,6 +6,8 @@ const INITIAL_STATE = {
   email: '',
   dataNascimento: '',
   endereco: '',
+  func: () => {},
+  functionGet: () => {}
 };
 
 export default function DashboardContato (state = INITIAL_STATE, action) {
@@ -22,6 +24,11 @@ export default function DashboardContato (state = INITIAL_STATE, action) {
         telefone: action.payload.telefone, dataNascimento: action.payload.dataNascimento,
         endereco: action.payload.endereco, email: action.payload.email
       }
+      case 'ATUALIZAR_GET':
+        return {
+          ...state,
+          functionGet: action.payload
+        }
     default:
       return state;
   }

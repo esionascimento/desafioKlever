@@ -11,3 +11,10 @@ export function SalveFormContato (contato) {
     payload: contato
   }
 }
+
+export function AtualizarGet (contato) {
+  return {
+    type: 'ATUALIZAR_GET',
+    payload: contato
+  }
+}
