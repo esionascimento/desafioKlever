@@ -9,6 +9,7 @@ export const NewContact = () => {
   const [visible, setVisible] = React.useState(false);
   const dispatch = useDispatch();
   const { visibleModalNewContact } = useSelector((state) => state.visibleModal);
+  const { functionGet } = useSelector((state) => state.dashboard);
   const [form] = Form.useForm();
 
   useEffect(() => {
@@ -20,10 +21,11 @@ export const NewContact = () => {
     dispatch(VisibleModalNewContact(false));
   };
 
-  
   const handleClick = (payload) => {
     dispatch(SalveFormContato(payload));
-    dashboardCreate(payload);
+    dashboardCreate(payload).then(() => {
+      functionGet();
+    });
     setVisible(false);
     dispatch(VisibleModalNewContact(false));
   };
