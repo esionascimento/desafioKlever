@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import { fetchDashboard, dashboardDelete } from '../../services/fetchActions';
-import { useDispatch } from 'react-redux';
+import { fetchDashboard, fetchDashboardDelete } from '../../services/fetchActions';
+import { useDispatch, useSelector } from 'react-redux';
 import { DashboardSelectContato, AtualizarGet } from '../../store/dashboard/Dashboard.actions';
 import { message } from 'antd';
-import { Reload } from '../reload';
 import { Detalhes } from '../detalhesContatos/Detalhes';
 import { EditarContato } from '../editarContato';
 import 'antd/dist/antd.css';
@@ -14,6 +13,7 @@ import { Input, Div } from './nomesContatos';
 export function NomesContatos() {
   const dispatch = useDispatch();
   const [data, setData ] = useState([]);
+  const { functionGet } = useSelector((state) => state.dashboard);
 
   useEffect(() => {
     aux();
@@ -35,13 +35,14 @@ export function NomesContatos() {
   }
 
   const RemoverContato = async (event) =>  {
-    const result = await dashboardDelete(event.target.name);
+    const result = await fetchDashboardDelete(event.target.name);
 
-    if (!result)
-      message.success('Contato removido com sucesso.');
+    if (!result) {
+      message.success('Sucesso: Contato removido com sucesso.');
+      functionGet();
+    }
     else
       message.error('Erro: remover contato');
-    Reload();
   }
 
   const editar = (e) => {
