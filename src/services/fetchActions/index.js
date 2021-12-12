@@ -4,14 +4,6 @@ require("dotenv").config();
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const token = localStorage.getItem('token');
 
-export const newCadastro = (user) => {
-  axios.post(`${BASE_URL}/user`, user)
-  .then(() => {
-    console.log("Cadastro com sucesso.");
-  })
-  .catch();
-};
-
 const APIPOST = axios.create({
   baseURL: BASE_URL,
   headers: {
@@ -19,6 +11,8 @@ const APIPOST = axios.create({
     'authorization': token,
   },
 });
+
+export const newCadastro = (user) => axios.post(`${BASE_URL}/user`, user);
 
 export const authenticate = (token) => APIPOST.post('/authorization', token);
 
