@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { Modal, Form, Button } from 'antd';
+import { Modal, Form, Button, message } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { VisibleModalEditar } from '../../store/visibleModal/visibleModal.actions';
-import { fetchDashboard } from '../../services/fetchActions';
+import { fetchDashboard, fetchDashboardEdit } from '../../services/fetchActions';
 
 import './editarContatoCss';
 import 'antd/dist/antd.css';
@@ -11,45 +11,43 @@ export const EditarContato = () => {
   const dispatch = useDispatch();
   const [visible, setVisible] = React.useState(false);
   const { visibleModalEditar } = useSelector((state) => state.visibleModal);
+  const { functionGet } = useSelector((state) => state.dashboard);
   const { contato } = useSelector((state) => state.dashboard);
-  const [data, setData ] = React.useState([]);
   const [form] = Form.useForm();
 
   useEffect(() => {
     fetchDashboard().then((aux) => {
       if (aux.data["length"] > 0) {
         const salve = aux.data[0].data;
-        salve.map((data, index) => {
-          if (contato === salve[index].name) {
+        let i;
+        for(i = 0; i < salve.length; i++) {
+          if (salve[i].name === contato) {
             form.setFieldsValue({
-              name: data.name,
-              sobrenome: data.sobrenome !== null ? data.sobrenome : "",
-              telefone: data.telefone,
-              email: data.email !== null ? data.email : "",
-              endereco: data.endereco !== null ? data.endereco : "",
-              dataNascimento: data.dataNascimento !== null ? data.dataNascimento : "",
+              name: salve[i].name,
+              sobrenome: salve[i].sobrenome !== null ? salve[i].sobrenome : "",
+              telefone: Number(salve[i].telefone),
+              email: salve[i].email !== null ? salve[i].email : "",
+              endereco: salve[i].endereco !== null ? salve[i].endereco : "",
+              dataNascimento: salve[i].dataNascimento !== null ? salve[i].dataNascimento : "",
             });
-            setData(data);
+            break;
           }
-          return ''
-        })
+        }
       }
+      setVisible(visibleModalEditar);
     });
-  },[form, contato]);
+  },[form, contato, visibleModalEditar]);
 
-  useEffect(() => {
-    setVisible(visibleModalEditar);
-  }, [visibleModalEditar])
-
-  const handleOk = () => {
-    setTimeout(() => {
-      setVisible(false);
-      dispatch(VisibleModalEditar(false));
-    }, 500);
-  };
-
-  const handleClick = () => {
+  const handleSubmit = (payload) => {
+    payload.contato = contato
+    dispatch(VisibleModalEditar(false));
     setVisible(false);
+    fetchDashboardEdit(payload).then(() => {
+      message.success('Sucesso: Contato editado com sucesso.');
+      functionGet();
+    }).catch(() => {
+      message.error('Erro: editar contato');
+    });
   };
 
   const handleCancel = () => {
@@ -61,7 +59,7 @@ export const EditarContato = () => {
     return (
       <>
         <div className="formContato">
-          <Form form={form} onFinish={handleClick}>
+          <Form form={form} onFinish={handleSubmit}>
             <div>
                 <Form.Item
                   label="Nome"
@@ -130,10 +128,10 @@ export const EditarContato = () => {
       <Modal
         title={`Editar Contato ${contato}`}
         visible={visible}
-        onOk={handleOk}
+        footer={false}
         onCancel={handleCancel}
       >
-        {data && formEditContact()}
+        {formEditContact()}
       </Modal>
     </>
   );
