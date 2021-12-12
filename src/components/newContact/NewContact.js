@@ -23,11 +23,11 @@ export const NewContact = () => {
 
   const handleSubmit = (payload) => {
     dispatch(SalveFormContato(payload));
-    dashboardCreate(payload).then(() => {
-      message.success('Sucesso: Contato criado com sucesso.')
+    dashboardCreate(payload).then((e) => {
+      message.success(`Sucesso: ${e.data.message}`)
       functionGet();
-    }).catch(() => {
-      message.error('Erro: criar contato');
+    }).catch((err) => {
+      message.error(`Erro: ${err.response.data.message}`);
     });
     setVisible(false);
     dispatch(VisibleModalNewContact(false));
