@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import  { Redirect } from 'react-router-dom';
+import { useState } from 'react';
+import { Redirect } from 'react-router-dom';
+import { message } from 'antd';
 import { newCadastro } from '../../services/fetchActions';
 
-import './Cadastro.css';
+import { H2, Button, Form, DivBody, DivInput, Input, DivButton, DivForm } from './cadastroCss';
 
 const initialState = {
   name: '',
@@ -20,62 +21,68 @@ function Cadastrar() {
       ...cadastro,
       [name]: value,
     })
-  }
+  };
   
   function onSubmit() {
-    newCadastro(cadastro);
+    newCadastro(cadastro).then(() => {
+      message.success('Sucesso: Usuario criado com sucesso.');
+    }).catch(() => {
+      message.error('Erro: Usuario nao cadastrado.');
+    });
     setRedirect(true);
-  }
+  };
   
   if (redirect) {
     return <Redirect to="/" />
-  }
+  };
+
+  function onClickRedirect() {
+    window.location.pathname = '/';
+  };
 
   return (
-    <div className="card">
-      <div>
-        <h3>Registre-se</h3>
-      </div>
-      <form onSubmit={onSubmit}>
-        <div className="input-form">
-          <div className="input-div">
-            <input
-              type="text"
-              name="name"
-              className="input-in input-ra"
-              placeholder="Nome"
-              onChange={onChange}
-              required
-            />
-          </div>
-          <div className="input-div">
-            <input
-              type="text"
-              name="email"
-              className="input-in input-ra"
-              placeholder="Email"
-              onChange={onChange}
-              required
-            />
-          </div>
-          <div className="input-div">
-            <input
-              type="password"
-              name="password"
-              className="input-in input-ra"
-              onChange={onChange}
-              placeholder="Senha"
-              required
-            /> 
-          </div>
-        </div>
-        <div className="input-form">
-          <button type="submit" value="cadastro" className="input-login input-ra">
-            Cadastra-se
-          </button>
-        </div>
-      </form>
-    </div>
+    <DivBody>
+      <H2>Registre-se</H2>
+      <Form onSubmit={onSubmit}>
+          <DivForm>
+            <DivInput>
+              <Input
+                type="text"
+                name="name"
+                placeholder="Nome"
+                onChange={onChange}
+                required
+              />
+            </DivInput>
+            <DivInput>
+              <Input
+                type="text"
+                name="email"
+                placeholder="Email"
+                onChange={onChange}
+                required
+              />
+            </DivInput>
+            <DivInput>
+              <Input
+                type="password"
+                name="password"
+                onChange={onChange}
+                placeholder="Senha"
+                required
+              /> 
+            </DivInput>
+          </DivForm>
+          <DivForm>
+            <DivButton>
+              <Button onClick={onClickRedirect}>Voltar para Tela Inicial</Button>
+              <Button type="submit" value="cadastro">
+                Cadastra-se
+              </Button>
+            </DivButton>
+          </DivForm>
+      </Form>
+    </DivBody>
   )
 }
 
