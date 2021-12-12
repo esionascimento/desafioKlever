@@ -5,10 +5,10 @@ import { DashboardSelectContato, AtualizarGet } from '../../store/dashboard/Dash
 import { message } from 'antd';
 import { Detalhes } from '../detalhesContatos/Detalhes';
 import { EditarContato } from '../editarContato';
-import 'antd/dist/antd.css';
 import { VisibleModaldetalhes, VisibleModalEditar } from '../../store/visibleModal/visibleModal.actions';
-
 import { Input, Div } from './nomesContatos';
+
+import 'antd/dist/antd.css';
 
 export function NomesContatos() {
   const dispatch = useDispatch();
@@ -32,23 +32,21 @@ export function NomesContatos() {
   function onClick(e) {
     dispatch(DashboardSelectContato(e.target.name));
     dispatch(VisibleModaldetalhes(true));
-  }
+  };
 
-  const RemoverContato = async (event) =>  {
-    const result = await fetchDashboardDelete(event.target.name);
-
-    if (!result) {
+  const RemoverContato = (event) => {
+    fetchDashboardDelete(event.target.name).then(() => {
       message.success('Sucesso: Contato removido com sucesso.');
       functionGet();
-    }
-    else
+    }).catch(() => {
       message.error('Erro: remover contato');
-  }
+    });
+  };
 
   const editar = (e) => {
     dispatch(DashboardSelectContato(e.target.name));
     dispatch(VisibleModalEditar(true));
-  }
+  };
 
   return (
     <div>
@@ -72,4 +70,4 @@ export function NomesContatos() {
       <EditarContato />
     </div>
   );
-}
+};
