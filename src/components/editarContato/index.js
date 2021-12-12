@@ -21,7 +21,7 @@ export const EditarContato = () => {
         const salve = aux.data[0].data;
         let i;
         for(i = 0; i < salve.length; i++) {
-          if (salve[i].name === contato) {
+          if (salve[i].id === contato) {
             form.setFieldsValue({
               name: salve[i].name,
               sobrenome: salve[i].sobrenome !== null ? salve[i].sobrenome : "",
