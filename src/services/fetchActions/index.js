@@ -6,7 +6,7 @@ const token = localStorage.getItem('token');
 
 export const newCadastro = (user) => {
   axios.post(`${BASE_URL}/user`, user)
-  .then((res) => {
+  .then(() => {
     console.log("Cadastro com sucesso.");
   })
   .catch();
@@ -28,7 +28,7 @@ export const fetchDashboard = () => APIPOST.get('/dashboard');
 
 export const fetchDashboardEdit = (contato) => APIPOST.put('/dashboard/edit', contato)
 
-export const dashboardDelete = (contato) => {
+export const fetchDashboardDelete = (contato) => {
   APIPOST.patch('/dashboard/delete', { name: contato})
 };
 export const dashboardCreate = (contato) => APIPOST.post('/dashboard/create', contato);
