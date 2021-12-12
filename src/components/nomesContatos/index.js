@@ -62,7 +62,7 @@ export function NomesContatos() {
                 name={`${or["name"]}`}
                 value={`${or["name"]} ${or["sobrenome"] ? or["sobrenome"]: ""}`}
                 />
-              <button name={`${or["name"]}`} onClick={(e) => editar(e)}>Editar</button>
+              <button name={`${or["id"]}`} onClick={(e) => editar(e)}>Editar</button>
               <button name={`${or["name"]}`} onClick={(e) => RemoverContato(e)}>Deletar</button>
             </Div>
         ))
