@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Modal, Form, Button } from 'antd';
+import { Modal, Form, Button, message } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { VisibleModalNewContact } from '../../store/visibleModal/visibleModal.actions';
 import { SalveFormContato } from '../../store/dashboard/Dashboard.actions';
@@ -21,10 +21,13 @@ export const NewContact = () => {
     dispatch(VisibleModalNewContact(false));
   };
 
-  const handleClick = (payload) => {
+  const handleSubmit = (payload) => {
     dispatch(SalveFormContato(payload));
     dashboardCreate(payload).then(() => {
+      message.success('Sucesso: Contato criado com sucesso.')
       functionGet();
+    }).catch(() => {
+      message.error('Erro: criar contato');
     });
     setVisible(false);
     dispatch(VisibleModalNewContact(false));
@@ -34,7 +37,7 @@ export const NewContact = () => {
     return (
       <>
         <div className="formContato">
-          <Form form={form} onFinish={handleClick}>
+          <Form form={form} onFinish={handleSubmit}>
             <div>
                 <Form.Item
                   label="Nome"
