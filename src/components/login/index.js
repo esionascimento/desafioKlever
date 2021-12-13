@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { login } from '../../services/fetchActions';
 
-import './Login.css';
+import { DivCard, Form, DivInputForm, H3, Input, Button, Hr, DivLink } from './login';
 
 function initialState() {
   return { email: '', password: '' };
 }
 
-function ComponentLogin() {
+export function Login() {
   const [valuesLogin, setValues] = useState(initialState);
   const [validLogin, setValidLogin] = useState(false);
   const { email, password } = valuesLogin;
@@ -33,55 +33,46 @@ function ComponentLogin() {
   }
 
   return (
-    <div className="card">
-      <form onSubmit={onSubmit}>
+    <DivCard>
+      <Form onSubmit={onSubmit}>
         {validLogin && 
-          <h3>Credenciais inexistente ou invalida</h3>
+          <H3>Credenciais inexistente ou invalida</H3>
         }
-        <div className="input-form">
-          <div className="input-div">
-            <input type="text"
-              name="email"
-              className="input-in input-ra"
-              value={email}
-              required
-              placeholder="email@email.com"
-              onChange={onChange}
-            />
-          </div>
-          <div className="input-div">
-            <input type="password"
-              name="password"
-              className="input-in input-ra"
-              onChange={onChange}
-              value={password}
-              required
-              placeholder="Senha"
-            />
-          </div>
-        </div>
-        <div className="input-form">
-          <button
+        <DivInputForm>
+          <Input type="text"
+            name="email"
+            value={email}
+            required
+            placeholder="email@email.com"
+            onChange={onChange}
+          />
+          <Input type="password"
+            name="password"
+            onChange={onChange}
+            value={password}
+            required
+            placeholder="Senha"
+          />
+        </DivInputForm>
+        <DivInputForm>
+          <Button
             type="submit"
             value="Login"
-            className="input-login input-ra"
           >
             Entrar
-          </button>
-        </div>
-        <hr className="hr2" />
-        <div className="footer">
-          <div className="links">
+          </Button>
+        </DivInputForm>
+        <Hr/>
+        <div>
+          <DivLink>
             Não tem uma conta?
             <Link to="/cadastro">Criar nova conta</Link>
-          </div>
+          </DivLink>
           {/* <div className="">
             <a href="#">Esqueceu sua senha?</a>
           </div> */}
         </div>
-      </form>
-    </div>
+      </Form>
+    </DivCard>
   );
 }
-
-export default ComponentLogin;
