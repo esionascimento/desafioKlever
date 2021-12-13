@@ -4,8 +4,6 @@
 - [O que deverá ser desenvolvido](#o-que-deverá-ser-desenvolvido)
 - [Desenvolvimento](#desenvolvimento)
 - [Para clonar o projeto](#para-clonar-o-projeto)
-- [Regras de negócio](#regras-de-negócio)
-- [EndPoint](#endpoint)
 - [Deploy](#deploy)
 
 # O que deverá ser desenvolvido
@@ -44,3 +42,13 @@ Requisitos realizados:
 5. Remover Contato
 6. Sair da aplicação
 
+# Deploy
+Deploy para auxiliar
+1. Link sem login, podendo acessar as rotas sem autenticação
+  * https://desafio-klever.vercel.app/
+
+# Variaveis
+Há somente uma variavel no projeto, onde se encontra no arquivo `.env-example` ou Caminho `src/services/fetchActions`
+
+
+README baseado nos REDMEs da trybe
