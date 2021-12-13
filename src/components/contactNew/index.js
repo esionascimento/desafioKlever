@@ -5,7 +5,7 @@ import { VisibleModalNewContact } from '../../store/visibleModal/visibleModal.ac
 import { SalveFormContato } from '../../store/dashboard/Dashboard.actions';
 import { dashboardCreate } from '../../services/fetchActions';
 
-import { Label, DivForm, Input } from './newContactCss';
+import { Label, DivForm, Input, DivButton } from './contactNewCss';
 
 export const NewContact = () => {
   const [visible, setVisible] = React.useState(false);
@@ -94,9 +94,11 @@ export const NewContact = () => {
                   <Input type="text" />
                 </Form.Item>
             </DivForm>
-            <Button type="primary" htmlType="submit">
-              Criar
-            </Button>
+            <DivButton>
+              <Button type="primary" htmlType="submit">
+                Criar
+              </Button>
+            </DivButton>
           </Form>
         </div>
       </>

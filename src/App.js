@@ -6,7 +6,7 @@ import store from './store';
 import RoutesPrivate from './services/Private/Private';
 
 import Home from './pages/Home/index.js'
-import Cadastro from './components/cadastro'
+import Cadastro from './components/register'
 import Dashboard from './pages/Dashboard/index.js';
 import { NotFound } from './pages/NotFound/NotFound.js';
 

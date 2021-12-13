@@ -4,7 +4,7 @@ import { message } from "antd";
 import { newCadastro } from "../../services/fetchActions";
 import {
   H2, Button, Form, DivBody, DivInput, Input, DivButton, DivForm,
-} from "./cadastroCss";
+} from "./registerCss";
 
 const initialState = {
   name: "",

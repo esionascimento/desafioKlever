@@ -7,7 +7,7 @@ import {
 } from "../../services/fetchActions";
 
 import "antd/dist/antd.css";
-import { Input, DivForm, Label } from "./editarContatoCss";
+import { Input, DivForm, Label, DivButton } from "./contactEditCss";
 
 export const EditarContato = () => {
   const dispatch = useDispatch();
@@ -137,9 +137,11 @@ export const EditarContato = () => {
                 <Input type="text" />
               </Form.Item>
             </DivForm>
-            <Button type="primary" htmlType="submit">
-              Salvar
-            </Button>
+            <DivButton>
+              <Button type="primary" htmlType="submit">
+                Salvar
+              </Button>
+            </DivButton>
           </Form>
         </div>
       </>

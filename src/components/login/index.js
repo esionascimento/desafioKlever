@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { login } from '../../services/fetchActions';
 
-import { DivCard, Form, DivInputForm, H3, Input, Button, Hr, DivLink } from './login';
+import { DivCard, Form, DivInputForm, H3, Input, Button, Hr, DivLink } from './loginCss';
 
 function initialState() {
   return { email: '', password: '' };

@@ -4,7 +4,7 @@ import { fetchDashboard } from "../../services/fetchActions";
 import { useSelector, useDispatch } from "react-redux";
 import { VisibleModaldetalhes } from "../../store/visibleModal/visibleModal.actions";
 
-import { Form, P, DivForm, Span } from "./detalhesContatosCss";
+import { Form, P, DivForm, Span } from "./contactDetailsCss";
 
 export const Detalhes = () => {
   const dispatch = useDispatch();
