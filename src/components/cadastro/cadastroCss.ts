@@ -5,7 +5,7 @@ export const DivBody = styled.div`
   flex-direction: column;
 `;
 
-export const H2 = styled.h2 `
+export const H2 = styled.h2`
   text-align: center;
   margin: 20px;
 `;
@@ -52,13 +52,10 @@ export const Input = styled.input`
   border-radius: 5px;
   height: 50px;
   width: 100%;
-  &:hover {
+  &:focus-visible {
     border-color: rgb(0, 60, 255);
     color: rgb(0, 60, 255);
     outline: none;
-  }
-  &:focus {
-    border-color: rgb(0, 60, 255);
   }
   @media(max-width: 550px) {
     height: 45px;
