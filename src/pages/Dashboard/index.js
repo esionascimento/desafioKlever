@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import 'antd/dist/antd.css';
 
 import { NomesContatos } from '../../components/nomesContatos';
-import { NewContact } from '../../components/newContact/NewContact';
+import { NewContact } from '../../components/newContact';
 import { VisibleModalNewContact } from '../../store/visibleModal/visibleModal.actions';
 
 import { Header, Li, DivBody, DivEsquerda, DivHeaderEsquerdo, DivDashboard } from './DashboardCss';
