@@ -49,6 +49,9 @@ Deploy para auxiliar
 
 # Variaveis
 Há somente uma variavel no projeto, onde se encontra no arquivo `.env-example` ou Caminho `src/services/fetchActions`
+1. Criar arquivo .env
+2. Por `REACT_APP_BASE_URL=https://desafio-ser-educacional-back.herokuapp.com` para simular a API
+Aguarde alguns segundo, pois está hospedado no Heroku, e provavelmente está "dormindo"
 
 
 README baseado nos REDMEs da trybe
