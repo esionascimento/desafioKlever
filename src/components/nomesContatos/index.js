@@ -3,7 +3,7 @@ import { fetchDashboard, fetchDashboardDelete } from '../../services/fetchAction
 import { useDispatch, useSelector } from 'react-redux';
 import { DashboardSelectContato, AtualizarGet } from '../../store/dashboard/Dashboard.actions';
 import { message } from 'antd';
-import { Detalhes } from '../detalhesContatos/Detalhes';
+import { Detalhes } from '../detalhesContatos';
 import { EditarContato } from '../editarContato';
 import { VisibleModaldetalhes, VisibleModalEditar } from '../../store/visibleModal/visibleModal.actions';
 import { Input, Div } from './nomesContatos';
